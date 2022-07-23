@@ -32,11 +32,11 @@ fun LoginScreen(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Image(painter = painterResource(id = R.drawable.ic_launcher_background),
+        Image(painter = painterResource(id = R.drawable.face_auth),
             contentDescription = "",
             modifier = Modifier.fillMaxSize(0.6f))
 
-        Text(text = "Welcome to My Chat",
+        Text(text = "Welcome to FaceAuth",
             modifier = Modifier.padding(16.dp),
             fontSize = 32.sp,
             fontWeight = FontWeight.SemiBold
@@ -55,7 +55,7 @@ fun LoginScreen(
             }
 
         }) {
-            Text(text = "Login",
+            Text(text = "Register",
                 fontSize = 20.sp)
         }
 
