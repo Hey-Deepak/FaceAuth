@@ -27,7 +27,6 @@ fun SetupNavGraph(
     sharedViewModel: SharedViewModel
     ) {
 
-
     LaunchedEffect(Unit) {
         splashViewModel.readProfileFromPrefsAndNavigate(navHostController)
     }

@@ -16,7 +16,6 @@ class SharedViewModel @Inject constructor(
 ) : BaseViewModel() {
 
     var senderProfile by mutableStateOf<Profile?>(null)
-    var receiverProfile by mutableStateOf<Profile?>(null)
 
     init {
         viewModelScope.launch(exceptionHandler) {
@@ -28,12 +27,6 @@ class SharedViewModel @Inject constructor(
     fun addSenderProfile(profile: Profile) {
         viewModelScope.launch {
             senderProfile = profile
-        }
-    }
-
-    fun addReceiverProfile(profile: Profile) {
-        viewModelScope.launch {
-            receiverProfile = profile
         }
     }
 }

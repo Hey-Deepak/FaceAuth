@@ -20,7 +20,6 @@ class ProfileViewModel @Inject constructor(
 
     val profileState = mutableStateOf<Profile?>(null)
 
-
     fun createProfile(profile: Profile, navHostController: NavHostController, sharedViewModel: SharedViewModel) {
         viewModelScope.launch(exceptionHandler) {
             showToast("Profile is Creating")
