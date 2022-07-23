@@ -152,6 +152,7 @@ class MainActivity : ComponentActivity() {
     private lateinit var loginHandler: (() -> Unit)
 
     // BioMetric
+
     /*fun onClickBiometrics(view: View) {
         BiometricUtil.showBiometricPrompt(
             activity = this,
