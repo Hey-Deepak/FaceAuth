@@ -1,4 +1,4 @@
-package com.dc.tast1.screen.viewmodel
+package com.dc.tast1.presentation.viewmodel
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf

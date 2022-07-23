@@ -1,4 +1,4 @@
-package com.dc.tast1
+package com.dc.tast1.nav_graph
 
 sealed class Screen(val route: String){
     object Splash: Screen("splash_screen")

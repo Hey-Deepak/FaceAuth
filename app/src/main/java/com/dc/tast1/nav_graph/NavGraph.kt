@@ -8,12 +8,11 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.dc.tast1.Screen
-import com.dc.tast1.screen.LoginScreen
-import com.dc.tast1.screen.ProfileScreen
-import com.dc.tast1.screen.SplashScreen
-import com.dc.tast1.screen.WelcomeScreen
-import com.dc.tast1.screen.viewmodel.*
+import com.dc.tast1.presentation.screen.LoginScreen
+import com.dc.tast1.presentation.screen.ProfileScreen
+import com.dc.tast1.presentation.screen.SplashScreen
+import com.dc.tast1.presentation.screen.WelcomeScreen
+import com.dc.tast1.presentation.viewmodel.*
 
 
 @ExperimentalMaterialApi

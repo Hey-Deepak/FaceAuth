@@ -1,4 +1,4 @@
-package com.dc.tast1.screen.components
+package com.dc.tast1.presentation.screen.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box

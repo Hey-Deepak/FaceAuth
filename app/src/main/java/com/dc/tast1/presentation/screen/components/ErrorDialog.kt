@@ -1,4 +1,4 @@
-package com.dc.tast1.screen.components
+package com.dc.tast1.presentation.screen.components
 
 import androidx.compose.material.AlertDialog
 import androidx.compose.material.Text

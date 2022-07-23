@@ -1,4 +1,4 @@
-package com.dc.tast1.screen
+package com.dc.tast1.presentation.screen
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

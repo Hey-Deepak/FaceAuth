@@ -1,10 +1,10 @@
-package com.dc.tast1.screen.viewmodel
+package com.dc.tast1.presentation.viewmodel
 
 import android.util.Log
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavHostController
-import com.dc.tast1.Screen
+import com.dc.tast1.nav_graph.Screen
 import com.dc.tast1.domain.repositoy.LocalRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch

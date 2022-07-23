@@ -1,4 +1,4 @@
-package com.dc.tast1.screen
+package com.dc.tast1.presentation.screen
 
 import android.util.Log
 import androidx.compose.foundation.Image
@@ -14,10 +14,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.dc.tast1.R
-import com.dc.tast1.screen.components.ErrorDialog
-import com.dc.tast1.screen.components.LoadingDialog
-import com.dc.tast1.screen.viewmodel.LoginViewModel
-import com.dc.tast1.screen.viewmodel.SharedViewModel
+import com.dc.tast1.presentation.screen.components.ErrorDialog
+import com.dc.tast1.presentation.screen.components.LoadingDialog
+import com.dc.tast1.presentation.viewmodel.LoginViewModel
+import com.dc.tast1.presentation.viewmodel.SharedViewModel
 import com.google.firebase.auth.FirebaseAuth
 
 @Composable

@@ -1,4 +1,4 @@
-package com.dc.tast1.screen.components
+package com.dc.tast1.presentation.screen.components
 
 import android.widget.Toast
 import androidx.compose.runtime.Composable

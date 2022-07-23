@@ -1,4 +1,4 @@
-package com.dc.tast1.screen
+package com.dc.tast1.presentation.screen
 
 import android.util.Log
 import androidx.compose.foundation.Image
@@ -21,11 +21,11 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
 import com.dc.tast1.R
-import com.dc.tast1.screen.components.ErrorDialog
-import com.dc.tast1.screen.components.LoadingDialog
-import com.dc.tast1.screen.components.ShowToast
-import com.dc.tast1.screen.viewmodel.ProfileViewModel
-import com.dc.tast1.screen.viewmodel.SharedViewModel
+import com.dc.tast1.presentation.screen.components.ErrorDialog
+import com.dc.tast1.presentation.screen.components.LoadingDialog
+import com.dc.tast1.presentation.screen.components.ShowToast
+import com.dc.tast1.presentation.viewmodel.ProfileViewModel
+import com.dc.tast1.presentation.viewmodel.SharedViewModel
 
 @Composable
 fun ProfileScreen(

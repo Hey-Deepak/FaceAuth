@@ -6,7 +6,7 @@ import com.dc.tast1.data.remote.LocalRepositoryImp
 import com.dc.tast1.data.remote.ServerRepositoryImp
 import com.dc.tast1.domain.repositoy.LocalRepository
 import com.dc.tast1.domain.repositoy.ServerRepository
-import com.dc.tast1.screen.viewmodel.SharedViewModel
+import com.dc.tast1.presentation.viewmodel.SharedViewModel
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -28,8 +28,6 @@ object AppModule {
         )
     }
 
-
-
     @Singleton
     @Provides
     fun provideServerRepository(): ServerRepository {
@@ -48,6 +46,4 @@ object AppModule {
             )
         )
     }
-
-
 }

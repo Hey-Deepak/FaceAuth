@@ -11,7 +11,6 @@ import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
-import androidx.biometric.BiometricPrompt
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.MaterialTheme
@@ -19,11 +18,10 @@ import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import com.dc.tast1.biometric.BiometricUtil
 import com.dc.tast1.nav_graph.SetupNavGraph
-import com.dc.tast1.screen.viewmodel.ProfileViewModel
-import com.dc.tast1.screen.viewmodel.SharedViewModel
-import com.dc.tast1.screen.viewmodel.SplashViewModel
+import com.dc.tast1.presentation.viewmodel.ProfileViewModel
+import com.dc.tast1.presentation.viewmodel.SharedViewModel
+import com.dc.tast1.presentation.viewmodel.SplashViewModel
 import com.dc.tast1.ui.theme.Tast1Theme
 import com.firebase.ui.auth.AuthUI
 import com.github.dhaval2404.imagepicker.ImagePicker

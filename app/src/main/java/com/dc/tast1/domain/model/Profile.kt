@@ -7,5 +7,5 @@ data class Profile(
     var mailId: String = "",
     var displayPhoto: String = "",
     var mobileNumber: String = "",
-    val address: String = ""
+    var address: String = ""
     )
