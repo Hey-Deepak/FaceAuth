@@ -9,8 +9,6 @@ interface ServerRepository {
 
     suspend fun uploadProfilePicture(profile: Profile): String
 
-    suspend fun getAllProfile(): List<Profile>
-
     suspend fun getProfile(name: String) : Profile?
 
     suspend fun fetchProfile(it: FirebaseUser): Profile?

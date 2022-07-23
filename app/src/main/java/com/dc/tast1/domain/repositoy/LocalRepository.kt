@@ -5,10 +5,6 @@ import com.dc.tast1.domain.model.Profile
 interface LocalRepository {
 
 
-    // Email
-    fun saveEmailToPrefs(email: String)
-    fun getLoginEmailFromPrefs(): String?
-
     //Profile
     suspend fun saveProfileToPrefs(profile: Profile)
     suspend fun getProfileFromPrefs(): Profile

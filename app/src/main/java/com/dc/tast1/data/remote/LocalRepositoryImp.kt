@@ -6,16 +6,9 @@ import com.dc.tast1.domain.repositoy.LocalRepository
 import com.google.gson.Gson
 
 class LocalRepositoryImp(
-    val prefs: SharedPreferences,
+    private val prefs: SharedPreferences,
 ) : LocalRepository {
 
-    override fun getLoginEmailFromPrefs(): String? {
-        return prefs.getString("emailId", null)
-    }
-
-    override fun saveEmailToPrefs(email: String) {
-        prefs.edit().putString("emailId", email).apply()
-    }
 
     override suspend fun saveProfileToPrefs(profile: Profile) {
         prefs.edit().putString("profile", Gson().toJson(profile)).apply()

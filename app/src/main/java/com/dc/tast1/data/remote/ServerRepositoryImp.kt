@@ -26,12 +26,6 @@ class ServerRepositoryImp() : ServerRepository {
     }
 
 
-    override suspend fun getAllProfile(): List<Profile> {
-        return firestoreDatabaseRef.collection("Profiles").get().await()
-            .toObjects(Profile::class.java).filterNotNull()
-    }
-
-
     override suspend fun getProfile(name: String): Profile? {
         return firestoreDatabaseRef.collection("Profiles").document(name).get().await()
             .toObject(Profile::class.java)
