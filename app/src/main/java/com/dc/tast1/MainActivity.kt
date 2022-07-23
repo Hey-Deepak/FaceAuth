@@ -5,19 +5,22 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
+import androidx.biometric.BiometricPrompt
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
+import androidx.compose.material.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.dc.tast1.biometric.BiometricAuthListener
+import com.dc.tast1.biometric.BiometricUtil
+import com.dc.tast1.databinding.ActivityMainBinding
+import com.dc.tast1.nav_graph.Screen
 import com.dc.tast1.nav_graph.SetupNavGraph
 import com.dc.tast1.presentation.viewmodel.ProfileViewModel
 import com.dc.tast1.presentation.viewmodel.SharedViewModel
@@ -28,16 +31,9 @@ import com.github.dhaval2404.imagepicker.ImagePicker
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainActivity : ComponentActivity() {
+class MainActivity : AppCompatActivity(), BiometricAuthListener {
 
-
-    /*
-    Splash Screen -> To decide which path need to choose from nav graph like face lock or welcome screen or profile screen
-    login screen
-    profile screen -> Photo, Name, MailId, Address Mobile Number -> Button(Register Yourself)
-    Welcome screen -> Profile Info with Welcome toast message.
-
-    */
+    private lateinit var binding: ActivityMainBinding
 
     lateinit var navHostController: NavHostController
 
@@ -49,31 +45,36 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        registerLoginLauncher()
-        registerImagePickerLauncher()
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        setContent {
-            Tast1Theme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
-                ) {
-                    //onClickBiometrics()
-                    navHostController = rememberNavController()
-                    SetupNavGraph(
-                        navHostController = navHostController,
-                        splashViewModel = splashViewModel,
-                        launchLoginFlow = ::launchLoginFlow,
-                        launchImagePickerFlow = ::lauchImagePickerFlow,
-                        profileViewModel = profileViewModel,
-                        sharedViewModel = sharedViewModel,
-                    )
+        binding.composeView.apply {
+            setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
+            setContent {
+                Tast1Theme {
+                    // A surface container using the 'background' color from the theme
+                    Surface(
+                        modifier = Modifier.fillMaxSize(),
+                        color = MaterialTheme.colors.background
+                    ) {
+                        navHostController = rememberNavController()
+                        SetupNavGraph(
+                            navHostController = navHostController,
+                            splashViewModel = splashViewModel,
+                            launchLoginFlow = ::launchLoginFlow,
+                            launchImagePickerFlow = ::lauchImagePickerFlow,
+                            profileViewModel = profileViewModel,
+                            sharedViewModel = sharedViewModel,
+                            showBiometric = ::showBiometric
+                        )
+                    }
                 }
             }
         }
-    }
 
+        registerLoginLauncher()
+        registerImagePickerLauncher()
+    }
 
     private lateinit var loginLauncher: ActivityResultLauncher<Intent>
     private lateinit var imagePickerLauncher: ActivityResultLauncher<Intent>
@@ -148,12 +149,8 @@ class MainActivity : ComponentActivity() {
             }
     }
 
-    // Step 3: Handler (to get the result)
-    private lateinit var loginHandler: (() -> Unit)
-
-    // BioMetric
-
-    /*fun onClickBiometrics(view: View) {
+    private fun showBiometric() {
+        Log.d("TAG", "showBiometric MainActivity")
         BiometricUtil.showBiometricPrompt(
             activity = this,
             listener = this,
@@ -162,19 +159,23 @@ class MainActivity : ComponentActivity() {
         )
     }
 
+    // Step 3: Handler (to get the result)
+    private lateinit var loginHandler: (() -> Unit)
+
     override fun onBiometricAuthenticationSuccess(result: BiometricPrompt.AuthenticationResult) {
         Toast.makeText(this, "Biometric success", Toast.LENGTH_SHORT)
             .show()
+        navHostController.navigate(route = Screen.Welcome.route) {
+            popUpTo(Screen.Profile.route) { inclusive = true }
+            popUpTo(Screen.Splash.route) { inclusive = true }
+        }
     }
 
     override fun onBiometricAuthenticationError(errorCode: Int, errorMessage: String) {
         Toast.makeText(this, "Biometric login. Error: $errorMessage", Toast.LENGTH_SHORT)
             .show()
+        BiometricUtil.lunchBiometricSettings(this)
     }
-
-    private fun showBiometricLoginOption() {
-        buttonBiometricsLogin.visibility =
-            if (BiometricUtil.isBiometricReady(this)) View.VISIBLE
-            else View.GONE
-    }*/
 }
+
+

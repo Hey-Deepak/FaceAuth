@@ -38,6 +38,7 @@ android {
     }
     buildFeatures {
         compose true
+        viewBinding true
     }
     composeOptions {
         kotlinCompilerExtensionVersion compose_version
@@ -60,6 +61,11 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.4.1'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0'
     implementation 'androidx.activity:activity-compose:1.4.0'
+
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.0'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.5.0'
+
     implementation 'com.google.firebase:firebase-auth-ktx:21.0.2'
     implementation 'com.google.firebase:firebase-messaging-ktx'
     implementation 'com.google.firebase:firebase-analytics-ktx'
@@ -123,6 +129,6 @@ dependencies {
     implementation 'com.github.dhaval2404:imagepicker:2.1'
 
     // Biometrics
-    def biometricLibraryVersion = "1.0.1"
+    def biometricLibraryVersion = "1.2.0-alpha04"
     implementation "androidx.biometric:biometric:$biometricLibraryVersion"
 }

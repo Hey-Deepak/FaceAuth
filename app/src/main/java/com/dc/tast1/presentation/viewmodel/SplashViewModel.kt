@@ -16,12 +16,15 @@ class SplashViewModel @Inject constructor(
 ): BaseViewModel() {
     private val isProfileCreatedState = mutableStateOf(false)
 
-    fun readProfileFromPrefsAndNavigate(navHostController: NavHostController) {
+    fun readProfileFromPrefsAndNavigate(
+        navHostController: NavHostController,
+        showBiometric: () -> Unit
+    ) {
         viewModelScope.launch(exceptionHandler) {
             isProfileCreatedState.value = localRepository.getIsProfileCreatedFromPrefs()
             Log.d("TAG", "readProfileFromPrefsAndNavigate: ${isProfileCreatedState.value}")
             if (isProfileCreatedState.value){
-                navHostController.navigate(Screen.Welcome.route){
+                navHostController.navigate(Screen.Splash.route){
                     popUpTo(Screen.Splash.route) {inclusive = true}
                 }
             } else {

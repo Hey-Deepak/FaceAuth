@@ -23,11 +23,12 @@ fun SetupNavGraph(
     launchLoginFlow: (() -> Unit) -> Unit,
     launchImagePickerFlow: () -> Unit,
     profileViewModel: ProfileViewModel,
-    sharedViewModel: SharedViewModel
+    sharedViewModel: SharedViewModel,
+    showBiometric: ()-> Unit
     ) {
 
     LaunchedEffect(Unit) {
-        splashViewModel.readProfileFromPrefsAndNavigate(navHostController)
+        splashViewModel.readProfileFromPrefsAndNavigate(navHostController, showBiometric)
     }
 
     val startDestination = Screen.Splash.route
@@ -35,7 +36,7 @@ fun SetupNavGraph(
 
     NavHost(navController = navHostController, startDestination = startDestination) {
         composable(route = Screen.Splash.route) {
-            SplashScreen()
+            SplashScreen(showBiometric, splashViewModel)
         }
         composable(route = Screen.Login.route) {
             val loginViewModel: LoginViewModel = hiltViewModel()

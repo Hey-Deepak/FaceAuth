@@ -6,6 +6,8 @@ import android.content.Intent
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.biometric.BiometricManager
+import androidx.biometric.BiometricManager.Authenticators.BIOMETRIC_STRONG
+import androidx.biometric.BiometricManager.Authenticators.BIOMETRIC_WEAK
 import androidx.biometric.BiometricPrompt
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -42,6 +44,8 @@ object BiometricUtil {
             .setTitle(title)
             .setSubtitle(subtitle)
             .setDescription(description)
+            .setAllowedAuthenticators(BIOMETRIC_WEAK)
+            .setNegativeButtonText("Cancel")
 
         // Use Device Credentials if allowed, otherwise show Cancel Button
         builder.apply {
@@ -88,8 +92,9 @@ object BiometricUtil {
      */
     fun showBiometricPrompt(
         title: String = "Biometric Authentication",
-        subtitle: String = "Enter biometric credentials to proceed.",
-        description: String = "Input your Fingerprint or FaceID to ensure it's you!",
+        subtitle: String = "Note :- In Some Devices FaceID may not work!",
+        description: String = "Input your Fingerprint or FaceID to ensure it's you!" +
+                "\nClick Cancel to Register/On Biometric Authentication",
         activity: AppCompatActivity,
         listener: BiometricAuthListener,
         cryptoObject: BiometricPrompt.CryptoObject? = null,
